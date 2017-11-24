@@ -1,0 +1,18 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container" style="margin-left: 0 auto">
+  <form method="post" >
+      {% csrf_token %}
+    <div class="form-group">
+      <div class="form-group" >
+      	 <textarea name="name" class="form-control" rows = "1" placeholder = "{{product.name}}" style="margin-top: 20px"></textarea>
+          <textarea name="price" class="form-control" rows = "1" placeholder = "{{product.price}}" style="margin-top: 20px"></textarea>
+      </div>
+        <textarea name="description" class="form-control col-lg-4 " rows = "7" id="userpost" placeholder = "{{product.description}}" style="margin-top: 40px"></textarea>
+	  <button type="submit" class="btn btn-success col-lg-2 col-lg-offset-5">Edera</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<html lang="se">
+
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<div class="col-sm-4">
+    <form method="post" action="/create_product/">
+      {% csrf_token %}
+
+
+      <div class="form-group" >
+               <textarea name="name" class="form-control" rows = "1" placeholder = "produktnamn..." style="margin-top: 20px"></textarea>
+          <textarea name="price" class="form-control" rows = "1" placeholder = "pris..." style="margin-top: 20px"></textarea>
+
+      </div>
+        <textarea name="description" class="form-control col-lg-4 " rows = "7" id="userpost" placeholder = "beskrivning..." style="margin-top: 40px"></textarea>
+
+	  <button type="submit" class="btn btn-success col-lg-2 col-lg-offset-5">Skapa</button>
+
+  </form>
+</div>
+<div class="col-sm-4">
+    <table class="table">
+
+    {%for info in full_list%}
+        <tr>
+        <td>
+             <div class="col-sm-4">
+                 <p style="color: red">{{info.n}}</p>
+        </div>
+        </td>
+       <td>
+           <div class="col-sm-4">
+            <p>{{info.d}}</p>
+        </div>
+       </td>
+        <td>
+            <div class="col-sm-2">
+                <a href="{% url 'edit_product' %}?id={{info.i}}">edera</a>
+            </div>
+        </td>
+            <td>
+            <div class="col-sm-2">
+        <a href="{% url 'delete' %}?id={{info.i}}">radera</a>
+            </div>
+        </td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+
+
+<div class="col-sm-4">
+
+        <form method="post" action="/query/">
+        {% csrf_token %}
+<div class="form-group">
+        <div>
+            <textarea name="query" class="form-control" rows = "1" placeholder = "sök en produkt..." style="margin-top: 20px"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success col-lg-2 col-lg-offset-5" style="margin-top: 50">Sök</button>
+    </div>
+        </form>
+
+
+</div>
+
+
+{% endblock %}
+</html>

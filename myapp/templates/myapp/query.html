@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<ul>
+    {%for item in list%}
+    <li style="color: green">{{item}}</li>
+    {%endfor%}
+    {%for id in id_list%}
+    <a href="{% url 'edit_product' %}?id={{id}}">Delera</a>
+    <a href="{% url 'delete' %}?id={{id}}">Delera</a>
+    {% endfor %}
+</ul>
+
+{% endblock %}

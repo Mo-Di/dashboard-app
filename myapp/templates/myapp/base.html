@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Dashboard{% endblock %}</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" href = "custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href = "">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid" style="color: #d83e53">
+    <div class="navbar-header dropdown">
+        {% block title_left %}
+        <a class="navbar-brand" >Dashboard
+        <!--<span class="caret"></span></a>-->
+        <!--<ul class="dropdown-menu">-->
+          <!--<li><a href="#">Instruction 1</a></li>-->
+          <!--<li><a href="#">Instruction 2</a></li>-->
+          <!--<li><a href="#">Instruction 3</a></li>-->
+        <!--</ul>-->
+      </a>
+        {% endblock %}
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="{% url 'home' %}">Hem</a></li>
+      <li><a href="#">{{user.username}}</a></li>
+    </ul>
+  </div>
+</nav>
+
+    {% if user.is_authenticated %}
+        <span style="margin-left: 10px">Välkommen, {{user.username}}!</span>
+        <a href="{% url 'logout' %}">logga ut</a>
+    {% else %}
+        <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">registrera</a>
+    {% endif %}
+      <hr>
+
+
+    <main>
+      {% block content %}
+
+      {% endblock %}
+    </main>
+</body>
+</html>
