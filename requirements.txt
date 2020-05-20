@@ -9,7 +9,7 @@ enum34==1.1.6
 functools32==3.2.3.post2
 google-api-python-client==1.6.4
 gspread==0.6.2
-httplib2==0.10.3
+httplib2==0.18.0
 idna==2.6
 ipaddress==1.0.18
 matplotlib==2.0.0
